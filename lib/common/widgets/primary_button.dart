@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/app_colors.dart';
 import '../constants/app_text_style.dart';
@@ -18,7 +19,7 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ink(
-      height: 48.0,
+      height: 48.0.h,
       decoration: BoxDecoration(
         borderRadius: _borderRadius,
         gradient: LinearGradient(

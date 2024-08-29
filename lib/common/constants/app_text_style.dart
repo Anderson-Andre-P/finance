@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyle {
   AppTextStyle._();
 
-  static const TextStyle bigText = TextStyle(
+  static TextStyle bigText = TextStyle(
     fontFamily: 'Inter',
-    fontSize: 50,
+    fontSize: 50.sp,
     fontWeight: FontWeight.w700,
   );
 
-  static const TextStyle mediumText = TextStyle(
+  static TextStyle mediumText = TextStyle(
     fontFamily: 'Inter',
-    fontSize: 36,
+    fontSize: 36.sp,
     fontWeight: FontWeight.w700,
   );
 
-  static const TextStyle smallText = TextStyle(
+  static TextStyle smallText = TextStyle(
     fontFamily: 'Inter',
-    fontSize: 14,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w400,
   );
 
-  static const TextStyle buttonText = TextStyle(
+  static TextStyle buttonText = TextStyle(
     fontFamily: 'Inter',
-    fontSize: 18,
+    fontSize: 18.sp,
     fontWeight: FontWeight.w600,
   );
 }
