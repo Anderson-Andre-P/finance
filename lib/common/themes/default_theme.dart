@@ -7,7 +7,7 @@ class AppTheme {
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.scaffold,
     brightness: Brightness.light,
-    fontFamily: 'Satoshi',
+    fontFamily: 'Inter',
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: Colors.red,
       actionTextColor: Colors.white,
@@ -22,7 +22,7 @@ class AppTheme {
       filled: true,
       fillColor: Colors.transparent,
       hintStyle: const TextStyle(
-        color: Color(0xff383838),
+        color: Color(0xFF6B6B6B),
         fontWeight: FontWeight.w500,
       ),
       contentPadding: const EdgeInsets.all(

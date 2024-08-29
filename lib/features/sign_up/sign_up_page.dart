@@ -11,8 +11,16 @@ import '../../common/widgets/custom_primary_button.dart';
 import '../../common/widgets/custom_text_form_field.dart';
 import '../../common/widgets/custom_text_span.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,12 +44,12 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 210.h,
+                height: 140.h,
                 child: Image.asset(AppImages.billyComputerScientist),
               ),
-              const SizedBox(
-                height: 264,
+              SingleChildScrollView(
                 child: Form(
+                  key: _formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -50,22 +58,51 @@ class SignUpPage extends StatelessWidget {
                         customHintText: 'Name',
                         customSufixIcon: Icons.person,
                         customKeyboardType: TextInputType.text,
+                        customValidator: (value) {
+                          if (value!.isEmpty) {
+                            return "Esse campo não pode ser vazio.";
+                          }
+                          return null;
+                        },
                       ),
+                      16.verticalSpace,
                       CustomTextFormField(
                         customLabelText: 'Email',
                         customHintText: 'Email',
                         customSufixIcon: Icons.mail,
                         customKeyboardType: TextInputType.emailAddress,
+                        customValidator: (value) {
+                          if (value!.isEmpty) {
+                            return "Esse campo não pode ser vazio.";
+                          }
+                          return null;
+                        },
                       ),
+                      16.verticalSpace,
                       CustomPasswordFormField(
                         customLabelText: 'Password',
                         customHintText: 'Password',
                         customKeyboardType: TextInputType.text,
+                        customHelperText:
+                            "Sua senha precisa de 8 caracteres com pelo menos 1 maiúcula e 1 número",
+                        customValidator: (value) {
+                          if (value!.isEmpty) {
+                            return "Esse campo não pode ser vazio.";
+                          }
+                          return null;
+                        },
                       ),
+                      16.verticalSpace,
                       CustomPasswordFormField(
                         customLabelText: 'Confirm Password',
                         customHintText: 'Confirm Password',
                         customKeyboardType: TextInputType.text,
+                        customValidator: (value) {
+                          if (value!.isEmpty) {
+                            return "Esse campo não pode ser vazio.";
+                          }
+                          return null;
+                        },
                       ),
                     ],
                   ),
@@ -75,9 +112,16 @@ class SignUpPage extends StatelessWidget {
               CustomPrimaryButton(
                 textButton: "Sign Up",
                 onPressed: () {
-                  log("Tap");
+                  final valid = _formKey.currentState != null &&
+                      _formKey.currentState!.validate();
+                  if (valid) {
+                    log("Continuar logica de login");
+                  } else {
+                    log("Erro ao logar");
+                  }
                 },
               ),
+              16.verticalSpace,
               const CustomTextSpan(
                 primaryText: 'Already have an account?',
                 actionText: 'Sign In',
