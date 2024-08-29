@@ -20,7 +20,7 @@ class SplashPage extends StatelessWidget {
         child: Text(
           "Finance",
           style: AppTextStyle.bigText.copyWith(
-            color: AppColors.whiteLight,
+            color: AppColors.white,
           ),
         ),
       ),

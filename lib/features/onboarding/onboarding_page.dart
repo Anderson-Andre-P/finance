@@ -15,7 +15,7 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.iceLight,
+      backgroundColor: AppColors.scaffold,
       body: Align(
         child: Column(
           children: [
@@ -29,13 +29,13 @@ class OnboardingPage extends StatelessWidget {
             Text(
               "Spend Smarter",
               style: AppTextStyle.mediumText.copyWith(
-                color: AppColors.blueLightTwo,
+                color: AppColors.secondary,
               ),
             ),
             Text(
               "Save More",
               style: AppTextStyle.mediumText.copyWith(
-                color: AppColors.blueLightTwo,
+                color: AppColors.secondary,
               ),
             ),
             Padding(

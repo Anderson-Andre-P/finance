@@ -26,13 +26,13 @@ class SignUpPage extends StatelessWidget {
               Text(
                 "Spend Smarter",
                 style: AppTextStyle.mediumText.copyWith(
-                  color: AppColors.blueLightTwo,
+                  color: AppColors.secondary,
                 ),
               ),
               Text(
                 "Save More",
                 style: AppTextStyle.mediumText.copyWith(
-                  color: AppColors.blueLightTwo,
+                  color: AppColors.secondary,
                 ),
               ),
               SizedBox(

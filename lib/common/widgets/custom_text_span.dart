@@ -33,7 +33,7 @@ class CustomTextSpan extends StatelessWidget {
               },
             text: " $actionText",
             style: AppTextStyle.smallText.copyWith(
-              color: AppColors.blueLightOne,
+              color: AppColors.primary,
               fontWeight: FontWeight.w600,
             ),
           ),
