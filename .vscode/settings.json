@@ -1,0 +1,26 @@
+{
+  "files.exclude": {
+    ".vscode": false,
+    ".gitignore": true,
+    ".metadata": true,
+    "build": true,
+    "test": true,
+    ".flutter-plugins": true,
+    ".flutter-plugins-dependencies": true,
+    "LICENSE": true,
+    "pubspec.lock": true,
+    "README.md": true,
+    ".dart_tool": true,
+    "android": true,
+    "linux": true,
+    "macos": true,
+    "ios": true,
+    "windows": true,
+    "web": true,
+    "assets": false,
+    ".idea": true,
+    ".github": true,
+    "analysis_options.yaml": true,
+    "finance.iml": true
+  }
+}

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:finance/common/constants/app_colors.dart';
+import 'package:finance/common/constants/app_images.dart';
 import 'package:finance/common/constants/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,19 +23,19 @@ class OnboardingPage extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Image.asset(
-                "assets/images/man.png",
+                AppImages.billyWithBank,
               ),
             ),
             Text(
               "Spend Smarter",
               style: AppTextStyle.mediumText.copyWith(
-                color: AppColors.greenLightTwo,
+                color: AppColors.blueLightTwo,
               ),
             ),
             Text(
               "Save More",
               style: AppTextStyle.mediumText.copyWith(
-                color: AppColors.greenLightTwo,
+                color: AppColors.blueLightTwo,
               ),
             ),
             Padding(
