@@ -7,14 +7,13 @@ import '../constants/app_text_style.dart';
 class PrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final String textButton;
-  const PrimaryButton({
+  PrimaryButton({
     super.key,
     this.onPressed,
     required this.textButton,
   });
 
-  final BorderRadius _borderRadius =
-      const BorderRadius.all(Radius.circular(24.0));
+  final BorderRadius _borderRadius = BorderRadius.all(Radius.circular(24.0.r));
 
   @override
   Widget build(BuildContext context) {
