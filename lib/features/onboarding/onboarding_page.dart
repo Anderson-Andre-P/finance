@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:finance/common/constants/app_colors.dart';
 import 'package:finance/common/constants/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/widgets/primary_button.dart';
 
@@ -16,9 +17,7 @@ class OnboardingPage extends StatelessWidget {
       body: Align(
         child: Column(
           children: [
-            const SizedBox(
-              height: 64.0,
-            ),
+            64.verticalSpace,
             Expanded(
               flex: 2,
               child: Image.asset(
@@ -52,9 +51,7 @@ class OnboardingPage extends StatelessWidget {
                 color: AppColors.greyLight,
               ),
             ),
-            const SizedBox(
-              height: 32.0,
-            ),
+            32.verticalSpace,
           ],
         ),
       ),
