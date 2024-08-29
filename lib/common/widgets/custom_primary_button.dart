@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_style.dart';
 
-class PrimaryButton extends StatelessWidget {
+class CustomPrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final String textButton;
-  PrimaryButton({
+  CustomPrimaryButton({
     super.key,
     this.onPressed,
     required this.textButton,

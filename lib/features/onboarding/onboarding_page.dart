@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/widgets/custom_primary_button.dart';
-import '../../common/widgets/custom_text_button.dart';
+import '../../common/widgets/custom_text_span.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -39,7 +39,7 @@ class OnboardingPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(24.0),
-              child: PrimaryButton(
+              child: CustomPrimaryButton(
                 textButton: "Get Started",
                 onPressed: () {
                   log("Tap");
