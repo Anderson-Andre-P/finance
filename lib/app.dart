@@ -1,4 +1,5 @@
-import 'package:finance/features/onboarding/onboarding_page.dart';
+import 'package:finance/common/themes/default_theme.dart';
+import 'package:finance/features/sign_up/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,9 +13,14 @@ class App extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return const MaterialApp(
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: OnboardingPage(),
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.system,
+          home: const SafeArea(
+            child: SignUpPage(),
+          ),
         );
       },
     );
