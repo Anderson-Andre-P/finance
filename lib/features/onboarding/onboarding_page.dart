@@ -5,8 +5,8 @@ import 'package:finance/common/constants/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/widgets/custom_primary_button.dart';
 import '../../common/widgets/custom_text_button.dart';
-import '../../common/widgets/primary_button.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
