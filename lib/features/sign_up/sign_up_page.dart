@@ -1,16 +1,20 @@
 import 'dart:developer';
 
 import 'package:finance/common/utils/validator.dart';
+import 'package:finance/features/sign_up/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/constants/app_colors.dart';
 import '../../common/constants/app_images.dart';
 import '../../common/constants/app_text_style.dart';
+import '../../common/widgets/custom_bottom_sheet.dart';
+import '../../common/widgets/custom_circular_progress_indicator.dart';
 import '../../common/widgets/custom_password_form_field.dart';
 import '../../common/widgets/custom_primary_button.dart';
 import '../../common/widgets/custom_text_form_field.dart';
 import '../../common/widgets/custom_text_span.dart';
+import 'sign_up_state.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -23,6 +27,50 @@ class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
 
   final _passwordController = TextEditingController();
+
+  final _controller = SignUpController();
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(
+      () {
+        if (_controller.state is SignUpLoadingState) {
+          showDialog(
+            context: context,
+            builder: (context) => const CustomCircularProgressIndicator(),
+          );
+        }
+        if (_controller.state is SignUpSuccessState) {
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Scaffold(
+                body: Center(
+                  child: Text(
+                    "Nova Tela",
+                  ),
+                ),
+              ),
+            ),
+          );
+        }
+
+        if (_controller.state is SignUpErrorState) {
+          Navigator.pop(context);
+          customBottomSheet(context);
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   final valid = _formKey.currentState != null &&
                       _formKey.currentState!.validate();
                   if (valid) {
-                    log("Continuar logica de login");
+                    _controller.doSignUp();
                   } else {
                     log("Erro ao logar");
                   }
