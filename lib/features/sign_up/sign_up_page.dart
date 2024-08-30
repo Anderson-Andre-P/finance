@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:finance/common/utils/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,6 +21,8 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
+
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,56 +56,39 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomTextFormField(
+                      const CustomTextFormField(
                         customLabelText: 'Name',
                         customHintText: 'Name',
                         customSufixIcon: Icons.person,
                         customKeyboardType: TextInputType.text,
-                        customValidator: (value) {
-                          if (value!.isEmpty) {
-                            return "Esse campo não pode ser vazio.";
-                          }
-                          return null;
-                        },
+                        customValidator: Validator.validateName,
+                        textCapitalization: TextCapitalization.words,
                       ),
                       16.verticalSpace,
-                      CustomTextFormField(
+                      const CustomTextFormField(
                         customLabelText: 'Email',
                         customHintText: 'Email',
                         customSufixIcon: Icons.mail,
                         customKeyboardType: TextInputType.emailAddress,
-                        customValidator: (value) {
-                          if (value!.isEmpty) {
-                            return "Esse campo não pode ser vazio.";
-                          }
-                          return null;
-                        },
+                        customValidator: Validator.validateEmail,
                       ),
                       16.verticalSpace,
                       CustomPasswordFormField(
                         customLabelText: 'Password',
                         customHintText: 'Password',
                         customKeyboardType: TextInputType.text,
-                        customHelperText:
-                            "Sua senha precisa de 8 caracteres com pelo menos 1 maiúcula e 1 número",
-                        customValidator: (value) {
-                          if (value!.isEmpty) {
-                            return "Esse campo não pode ser vazio.";
-                          }
-                          return null;
-                        },
+                        customHelperText: "The password needs to be strong",
+                        customValidator: Validator.validatePassword,
+                        controller: _passwordController,
                       ),
                       16.verticalSpace,
                       CustomPasswordFormField(
                         customLabelText: 'Confirm Password',
                         customHintText: 'Confirm Password',
                         customKeyboardType: TextInputType.text,
-                        customValidator: (value) {
-                          if (value!.isEmpty) {
-                            return "Esse campo não pode ser vazio.";
-                          }
-                          return null;
-                        },
+                        customValidator: (value) =>
+                            Validator.validateConfirmPassword(
+                                _passwordController.text, value),
                       ),
                     ],
                   ),

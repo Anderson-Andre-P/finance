@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/app_colors.dart';
@@ -9,6 +10,8 @@ class CustomTextFormField extends StatefulWidget {
   final IconData customSufixIcon;
   final TextInputType customKeyboardType;
   final TextEditingController? controller;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextCapitalization? textCapitalization;
   final String? customHelperText;
 
   final FormFieldValidator<String>? customValidator;
@@ -22,6 +25,8 @@ class CustomTextFormField extends StatefulWidget {
     this.controller,
     this.customValidator,
     this.customHelperText,
+    this.inputFormatters,
+    this.textCapitalization,
   });
 
   @override
@@ -37,6 +42,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       cursorColor: AppColors.primary,
       textInputAction: TextInputAction.next,
       keyboardType: widget.customKeyboardType,
+      textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
       decoration: InputDecoration(
         helperText: widget.customHelperText,
         hintText: widget.customHintText,

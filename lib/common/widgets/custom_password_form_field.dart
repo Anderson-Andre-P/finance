@@ -61,7 +61,7 @@ class _CustomPasswordFormFieldState extends State<CustomPasswordFormField> {
       obscureText: isVisible,
       decoration: InputDecoration(
         helperText: _helperText,
-        helperMaxLines: 2,
+        helperMaxLines: 3,
         hintText: widget.customHintText,
         labelText: widget.customLabelText,
         labelStyle: const TextStyle(

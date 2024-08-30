@@ -56,6 +56,9 @@ class AppTheme {
           width: 1,
         ),
       ),
+      errorStyle: const TextStyle(
+        color: Colors.red,
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
