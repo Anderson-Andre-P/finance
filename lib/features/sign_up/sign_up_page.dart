@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:finance/common/utils/validator.dart';
 import 'package:finance/features/sign_up/sign_up_controller.dart';
+import 'package:finance/services/mock_auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,12 +27,16 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
 
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final _controller = SignUpController();
+  final _controller = SignUpController(MockAuthService());
 
   @override
   void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     _controller.dispose();
     super.dispose();
@@ -65,8 +70,13 @@ class _SignUpPageState extends State<SignUpPage> {
         }
 
         if (_controller.state is SignUpErrorState) {
+          final errorMessage = _controller.state as SignUpErrorState;
           Navigator.pop(context);
-          customBottomSheet(context);
+          customBottomSheet(
+            context,
+            content: errorMessage.message,
+            buttonText: "Tentar novamente",
+          );
         }
       },
     );
@@ -104,7 +114,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const CustomTextFormField(
+                      CustomTextFormField(
+                        controller: _nameController,
                         customLabelText: 'Name',
                         customHintText: 'Name',
                         customSufixIcon: Icons.person,
@@ -113,7 +124,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         textCapitalization: TextCapitalization.words,
                       ),
                       16.verticalSpace,
-                      const CustomTextFormField(
+                      CustomTextFormField(
+                        controller: _emailController,
                         customLabelText: 'Email',
                         customHintText: 'Email',
                         customSufixIcon: Icons.mail,
@@ -149,7 +161,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   final valid = _formKey.currentState != null &&
                       _formKey.currentState!.validate();
                   if (valid) {
-                    _controller.doSignUp();
+                    _controller.signUp(
+                      name: _nameController.text,
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    );
                   } else {
                     log("Erro ao logar");
                   }
