@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:finance/common/constants/app_colors.dart';
 import 'package:finance/common/constants/app_images.dart';
+import 'package:finance/common/constants/app_routes.dart';
 import 'package:finance/common/constants/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +42,7 @@ class OnboardingPage extends StatelessWidget {
               child: CustomPrimaryButton(
                 textButton: "Get Started",
                 onPressed: () {
-                  log("Tap");
+                  Navigator.pushNamed(context, NamedRoute.signUp);
                 },
               ),
             ),
