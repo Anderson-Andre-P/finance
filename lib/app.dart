@@ -6,6 +6,8 @@ import 'package:finance/features/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/sign_in/sign_in_page.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -27,6 +29,7 @@ class App extends StatelessWidget {
               NamedRoute.initial: (context) => const OnboardingPage(),
               NamedRoute.splash: (context) => const SplashPage(),
               NamedRoute.signUp: (context) => const SignUpPage(),
+              NamedRoute.signIn: (context) => const SignInPage(),
             },
           );
         },

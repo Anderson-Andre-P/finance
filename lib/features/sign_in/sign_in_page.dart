@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:finance/common/utils/validator.dart';
-import 'package:finance/features/sign_up/sign_up_controller.dart';
 import 'package:finance/services/mock_auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,27 +15,26 @@ import '../../common/widgets/custom_password_form_field.dart';
 import '../../common/widgets/custom_primary_button.dart';
 import '../../common/widgets/custom_text_form_field.dart';
 import '../../common/widgets/custom_text_span.dart';
-import 'sign_up_state.dart';
+import 'sign_in_controller.dart';
+import 'sign_in_state.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
 
-  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final _controller = SignUpController(MockAuthService());
+  final _controller = SignInController(MockAuthService());
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _controller.dispose();
@@ -48,13 +46,13 @@ class _SignUpPageState extends State<SignUpPage> {
     super.initState();
     _controller.addListener(
       () {
-        if (_controller.state is SignUpStateLoading) {
+        if (_controller.state is SignInStateLoading) {
           showDialog(
             context: context,
             builder: (context) => const CustomCircularProgressIndicator(),
           );
         }
-        if (_controller.state is SignUpStateSuccess) {
+        if (_controller.state is SignInStateSuccess) {
           Navigator.pop(context);
           Navigator.push(
             context,
@@ -70,8 +68,8 @@ class _SignUpPageState extends State<SignUpPage> {
           );
         }
 
-        if (_controller.state is SignUpStateError) {
-          final errorMessage = _controller.state as SignUpStateError;
+        if (_controller.state is SignInStateError) {
+          final errorMessage = _controller.state as SignInStateError;
           Navigator.pop(context);
           customBottomSheet(
             context,
@@ -94,20 +92,14 @@ class _SignUpPageState extends State<SignUpPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Spend Smarter",
-                style: AppTextStyle.mediumText.copyWith(
-                  color: AppColors.secondary,
-                ),
-              ),
-              Text(
-                "Save More",
+                "Welcome Back!",
                 style: AppTextStyle.mediumText.copyWith(
                   color: AppColors.secondary,
                 ),
               ),
               SizedBox(
                 height: 140.h,
-                child: Image.asset(AppImages.billyComputerScientist),
+                child: Image.asset(AppImages.billyWithKey),
               ),
               SingleChildScrollView(
                 child: Form(
@@ -115,15 +107,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomTextFormField(
-                        controller: _nameController,
-                        customLabelText: 'Name',
-                        customHintText: 'Name',
-                        customSufixIcon: Icons.person,
-                        customKeyboardType: TextInputType.text,
-                        customValidator: Validator.validateName,
-                        textCapitalization: TextCapitalization.words,
-                      ),
                       16.verticalSpace,
                       CustomTextFormField(
                         controller: _emailController,
@@ -143,27 +126,18 @@ class _SignUpPageState extends State<SignUpPage> {
                         controller: _passwordController,
                       ),
                       16.verticalSpace,
-                      CustomPasswordFormField(
-                        customLabelText: 'Confirm Password',
-                        customHintText: 'Confirm Password',
-                        customKeyboardType: TextInputType.text,
-                        customValidator: (value) =>
-                            Validator.validateConfirmPassword(
-                                _passwordController.text, value),
-                      ),
                     ],
                   ),
                 ),
               ),
               24.verticalSpace,
               CustomPrimaryButton(
-                textButton: "Sign Up",
+                textButton: "Login",
                 onPressed: () {
                   final valid = _formKey.currentState != null &&
                       _formKey.currentState!.validate();
                   if (valid) {
-                    _controller.signUp(
-                      name: _nameController.text,
+                    _controller.signIn(
                       email: _emailController.text,
                       password: _passwordController.text,
                     );
@@ -174,9 +148,9 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               16.verticalSpace,
               const CustomTextSpan(
-                page: NamedRoute.signIn,
-                primaryText: 'Already have an account?',
-                actionText: 'Sign In',
+                page: NamedRoute.signUp,
+                primaryText: 'Don\'t have an account?',
+                actionText: 'Sign Up',
               ),
             ],
           ),

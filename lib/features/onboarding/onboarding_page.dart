@@ -49,6 +49,7 @@ class OnboardingPage extends StatelessWidget {
             const CustomTextSpan(
               primaryText: 'Already have an account?',
               actionText: 'Log In',
+              page: NamedRoute.signIn,
             ),
             32.verticalSpace,
           ],
