@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:finance/common/utils/validator.dart';
 import 'package:finance/features/sign_up/sign_up_controller.dart';
-import 'package:finance/services/mock_auth_service.dart';
+import 'package:finance/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,7 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final _controller = SignUpController(MockAuthService());
+  final _controller = locator.get<SignUpController>();
 
   @override
   void dispose() {
