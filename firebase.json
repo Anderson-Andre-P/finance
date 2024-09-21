@@ -1,0 +1,22 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "finace-app-c7b69",
+          "appId": "1:451809096423:android:982fab49ea3ad859b7e842",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "finace-app-c7b69",
+          "configurations": {
+            "android": "1:451809096423:android:982fab49ea3ad859b7e842",
+            "ios": "1:451809096423:ios:fe6fb98055edb7cbb7e842"
+          }
+        }
+      }
+    }
+  }
+}

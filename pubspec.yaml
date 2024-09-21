@@ -15,12 +15,15 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_screenutil:
   get_it:
+  firebase_core:
+  firebase_auth:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.0
+  change_app_package_name:
 
 flutter:
   uses-material-design: true

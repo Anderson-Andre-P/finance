@@ -1,4 +1,4 @@
-package andershow.finance.finance
+package com.cyclic.innovations.finance
 
 import io.flutter.embedding.android.FlutterActivity
 
