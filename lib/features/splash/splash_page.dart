@@ -1,4 +1,5 @@
 import 'package:finance/common/constants/app_colors.dart';
+import 'package:finance/common/constants/app_routes.dart';
 import 'package:finance/common/constants/app_text_style.dart';
 import 'package:finance/common/widgets/custom_circular_progress_indicator.dart';
 import 'package:finance/features/splash/splash_controller.dart';
@@ -24,7 +25,10 @@ class _SplashPageState extends State<SplashPage> {
     _splashController.isUserLogged();
     _splashController.addListener(() {
       if (_splashController.state is SplashStateSuccess) {
-      } else {}
+        Navigator.pushReplacementNamed(context, NamedRoute.home);
+      } else {
+        Navigator.pushReplacementNamed(context, NamedRoute.initial);
+      }
     });
   }
 
