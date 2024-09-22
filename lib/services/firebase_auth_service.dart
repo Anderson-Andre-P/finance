@@ -47,10 +47,10 @@ class FirebaseAuthService implements AuthService {
         password: password,
       );
 
-      if (result.user != null) {
+      if (_auth.currentUser != null) {
         await result.user!.updateDisplayName(name);
         return UserModel(
-          name: result.user!.displayName,
+          name: _auth.currentUser?.displayName,
           email: result.user!.email,
           id: result.user!.uid,
         );
