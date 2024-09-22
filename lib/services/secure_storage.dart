@@ -31,4 +31,15 @@ class SecureStorage {
   Future<void> deleteAll() async {
     return await _secureStorage.deleteAll();
   }
+
+  // Salvar a preferência de tema
+  Future<void> setThemeMode(bool isDarkMode) async {
+    await _secureStorage.write(
+        key: 'themeMode', value: isDarkMode ? 'dark' : 'light');
+  }
+
+  // Obter a preferência de tema
+  Future<String?> getThemeMode() async {
+    return await _secureStorage.read(key: 'themeMode');
+  }
 }
