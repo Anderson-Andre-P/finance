@@ -42,4 +42,12 @@ class SecureStorage {
   Future<String?> getThemeMode() async {
     return await _secureStorage.read(key: 'themeMode');
   }
+
+  Future<void> saveLanguage(String languageCode) async {
+    await _secureStorage.write(key: 'language', value: languageCode);
+  }
+
+  Future<String?> getLanguage() async {
+    return await _secureStorage.read(key: 'language');
+  }
 }

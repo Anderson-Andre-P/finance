@@ -18,8 +18,10 @@ dependencies:
   firebase_core:
   firebase_auth:
   flutter_secure_storage: ^9.2.2
-
   provider:
+  flutter_localizations:
+    sdk: flutter
+  intl:
 
 dev_dependencies:
   flutter_test:
@@ -27,11 +29,15 @@ dev_dependencies:
 
   flutter_lints: ^3.0.0
   change_app_package_name:
+  intl_utils:
 
 flutter:
+  generate: true
+
   uses-material-design: true
   assets:
     - assets/images/
+    - lib/l10n/
 
   fonts:
     - family: Inter

@@ -1,8 +1,10 @@
 import 'package:finance/common/constants/app_routes.dart';
+import 'package:finance/language_controller.dart';
 import 'package:finance/services/secure_storage.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/themes/theme_controller.dart';
+import '../../generated/l10n.dart';
 import '../../locator.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,10 +19,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final themeController = locator<ThemeController>();
+    final languageController = locator<LanguageController>();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign In'),
+        title: Text(S.of(context).signIn),
         actions: [
           IconButton(
             icon: Icon(
@@ -31,6 +34,25 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               themeController.toggleTheme();
             },
+          ),
+          PopupMenuButton<String>(
+            onSelected: (String value) {
+              if (value == 'pt') {
+                languageController.setLanguage('pt_BR');
+              } else {
+                languageController.setLanguage('en_US');
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'en',
+                child: Text('English'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'pt',
+                child: Text('Português'),
+              ),
+            ],
           ),
         ],
       ),
