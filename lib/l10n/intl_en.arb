@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "welcomeMessage": "Welcome to the Finance App",
+  "@welcomeMessage": {
+    "description": "Welcome message for the app"
+  },
+  "signIn": "Sign In",
+  "@signIn": {
+    "description": "Button to sign in"
+  },
+  "signUp": "Sign Up",
+  "@signUp": {
+    "description": "Button to sign up"
+  }
+}

@@ -16,6 +16,12 @@ class AppTextStyle {
     fontWeight: FontWeight.w700,
   );
 
+  static TextStyle mediumTextTwo = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+  );
+
   static TextStyle smallText = TextStyle(
     fontFamily: 'Inter',
     fontSize: 14.sp,

@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:finance/common/constants/app_colors.dart';
+import 'package:finance/common/constants/app_images.dart';
+import 'package:finance/common/constants/app_routes.dart';
 import 'package:finance/common/constants/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +14,7 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.iceLight,
+      backgroundColor: AppColors.scaffold,
       body: Align(
         child: Column(
           children: [
@@ -22,19 +22,19 @@ class OnboardingPage extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Image.asset(
-                "assets/images/man.png",
+                AppImages.billyWithBank,
               ),
             ),
             Text(
               "Spend Smarter",
               style: AppTextStyle.mediumText.copyWith(
-                color: AppColors.greenLightTwo,
+                color: AppColors.secondary,
               ),
             ),
             Text(
               "Save More",
               style: AppTextStyle.mediumText.copyWith(
-                color: AppColors.greenLightTwo,
+                color: AppColors.secondary,
               ),
             ),
             Padding(
@@ -42,13 +42,14 @@ class OnboardingPage extends StatelessWidget {
               child: CustomPrimaryButton(
                 textButton: "Get Started",
                 onPressed: () {
-                  log("Tap");
+                  Navigator.pushNamed(context, NamedRoute.signUp);
                 },
               ),
             ),
             const CustomTextSpan(
               primaryText: 'Already have an account?',
               actionText: 'Log In',
+              page: NamedRoute.signIn,
             ),
             32.verticalSpace,
           ],
